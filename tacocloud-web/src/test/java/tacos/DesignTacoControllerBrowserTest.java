@@ -13,9 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -25,8 +22,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-//@ExtendWith(SpringExtension.class)
-//@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Disabled("Reintroduce this test after fixing Spring Boot config")
 public class DesignTacoControllerBrowserTest {
 
@@ -40,21 +37,10 @@ public class DesignTacoControllerBrowserTest {
 
   @BeforeAll
   public static void openBrowser() {
-    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
-    options.addArguments("--headless");
-    options.setExperimentalOption("useAutomationExtension", false);
-    options.addArguments("start-maximized"); // open Browser in maximized mode
-    options.addArguments("disable-infobars"); // disabling infobars
-    options.addArguments("--disable-extensions"); // disabling extensions
-    options.addArguments("--disable-gpu"); // applicable to windows os only
-    options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-    options.merge(capabilities);
     WebDriverManager.chromedriver().setup();
-    browser = new ChromeDriver(options);
+    browser = new ChromeDriver();
     browser.manage().timeouts()
-        .implicitlyWait(40, TimeUnit.SECONDS);
+        .implicitlyWait(10, TimeUnit.SECONDS);
   }
 
   @AfterAll
