@@ -52,11 +52,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     </dependency>
     <dependency>
       <groupId>sia</groupId>
-      <artifactId>tacocloud-ui</artifactId>
-      <version>${tacocloud.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>sia</groupId>
       <artifactId>tacocloud-jmx</artifactId>
       <version>${tacocloud.version}</version>
     </dependency>
