@@ -29,6 +29,7 @@ jobs:
           mvn clean install -DskipTests
       - name: Build container images
         run: |
+          cd tacocloud-api
           mvn spring-boot:build-image -DskipTests \
             -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}                      
       - name: Log into container registry
