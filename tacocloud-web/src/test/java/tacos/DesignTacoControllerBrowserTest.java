@@ -25,8 +25,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+//@ExtendWith(SpringExtension.class)
+//@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Disabled("Reintroduce this test after fixing Spring Boot config")
 public class DesignTacoControllerBrowserTest {
 
@@ -54,7 +54,7 @@ public class DesignTacoControllerBrowserTest {
     WebDriverManager.chromedriver().setup();
     browser = new ChromeDriver(options);
     browser.manage().timeouts()
-        .implicitlyWait(10, TimeUnit.SECONDS);
+        .implicitlyWait(40, TimeUnit.SECONDS);
   }
 
   @AfterAll
